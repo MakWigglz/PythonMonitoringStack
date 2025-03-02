@@ -1,38 +1,26 @@
 {
 	"name": "Python Monitoring Stack Dev Container",
-	"image": "mcr.microsoft.com/devcontainers/python:3.9-bullseye", // Use a well-maintained base image.
-
-
-
-	"dockerComposeFile": "docker-compose.yml", // Specify the docker-compose file
-	"service": "app", // Specify the service name from docker-compose.yml
+	"image": "mcr.microsoft.com/devcontainers/python:3.9-bullseye",
 	"workspaceFolder": "/workspace",
-
-
-
-
-
-
-
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-python.python",  // Python extension
-				"ms-azuretools.vscode-docker", // Docker extension
-				"grafana.grafana" //Grafana extension
+				"ms-python.python",
+				"ms-azuretools.vscode-docker",
+				"grafana.grafana"
 			],
 			"settings": {
-				"terminal.integrated.defaultProfile.linux": "bash" // Set Bash as the default shell.
+				"terminal.integrated.defaultProfile.linux": "bash"
 			}
 		}
 	},
 	"postCreateCommand": [
-		"pip install -r requirements.txt", // Install requirements after container creation
-		"docker compose up -d prometheus grafana" //start prometheus and grafana in detached mode.
+		"pip install -r requirements.txt",
+		"docker compose up -d prometheus grafana"
 	],
-	"forwardPorts": [5000, 9090, 3000, 9100], // Forward necessary ports. Adjust if needed.
-    "mounts": [
-        "source=${localWorkspaceFolder},target=/workspace,type=bind"
-    ],
-    "runArgs": [ "--cap-add=SYS_ADMIN" ] // needed for grafana and prometheus
+	"forwardPorts": [5000, 9090, 3000, 9100],
+	"mounts": [
+		"source=${localWorkspaceFolder},target=/workspace,type=bind"
+	],
+	"runArgs": [ "--cap-add=SYS_ADMIN" ]
 }
