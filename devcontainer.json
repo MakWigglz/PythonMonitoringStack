@@ -3,7 +3,9 @@
 	"image": "mcr.microsoft.com/devcontainers/python:3.9-bullseye", // Use a well-maintained base image.
 
 
-	"dockerComposeFile": ["docker-compose.yml"], // Specify the docker-compose file
+
+	"dockerComposeFile": "docker-compose.yml", // Specify the docker-compose file
+	"service": "app", // Specify the service name from docker-compose.yml
 	"workspaceFolder": "/workspace",
 
 
