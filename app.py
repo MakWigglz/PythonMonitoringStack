@@ -1,7 +1,6 @@
-# app.py
 from flask import Flask
-from prometheus_client import start_http_server, Summary, Counter
-
+from prometheus_client import start_http_server, Summary, Counter,REGISTRY
+import time
 app = Flask(__name__)
 
 # Create a metric to track time spent and requests made.
@@ -16,6 +15,5 @@ def hello():
 
 if __name__ == '__main__':
     # Start up the server to expose the metrics.
-    start_http_server(8000)
-    # Run the Flask app.
-    app.run(host='0.0.0.0', port=5000)
+    start_http_server(9100) #Expose metrics on a different port.
+    app.run(debug=True,host='0.0.0.0', port=5000)
